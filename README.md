@@ -46,6 +46,14 @@ docker pull crackair/xrayr:latest && docker run --restart=always --name xrayr -d
 2. `cd XrayR`
 3. 编辑配置文件：config.yml，详见：配置文件说明.
 4. 启动docker：`docker-compose up -d`
+5. 启动docker：`docker-compose restart`
+
+# 本地镜像安装
+`docker load < crackair-xrayr-latest.tar`
+
+# BBR加速
+`chmod +x tcp.sh && ./tcp.sh`
+
 
 配置文件基本格式如下，Nodes下可以同时添加多个面板，多个节点配置信息，只需添加相同格式的Nodes item即可.
 
