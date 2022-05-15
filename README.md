@@ -16,22 +16,38 @@ XrayR已于2022年4月27日删库，此库留作备份使用
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/longyi8/XrayR/master/install.sh)
 ```
+
+# 安装Docker
+
+```
+yum install -y yum-utils
+yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce docker-ce-cli containerd.io -y
+systemctl start docker
+systemctl enable docker
+```
+
+# 安装Docker-compose
+
+```
+curl -fsSL https://get.docker.com | bash -s docker
+curl -L "https://github.com/docker/compose/releases/download/1.26.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+```
+
+
 # Docker 安装
 
 ```
 docker pull crackair/xrayr:latest && docker run --restart=always --name xrayr -d -v ${PATH_TO_CONFIG}/config.yml:/etc/XrayR/config.yml --network=host crackair/xrayr:latest
 ```
 
-# Docker compose 安装
-0. 安装docker-compose: 
-```
-curl -fsSL https://get.docker.com | bash -s docker
-curl -L "https://github.com/docker/compose/releases/download/1.26.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-```
-1. `git clone https://github.com/longyi8/XrayR`
+# Docker-compose 安装XrayR (推荐)
+1. `git clone https://github.com/Leo7101819/XrayR.git`
 2. `cd XrayR`
-3. 编辑config。
+3. 编辑配置文件：config.yml，详见：配置文件说明
 配置文件基本格式如下，Nodes下可以同时添加多个面板，多个节点配置信息，只需添加相同格式的Nodes item即可。
 4. 启动docker：`docker-compose up -d`
 ```
